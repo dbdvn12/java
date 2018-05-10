@@ -1,0 +1,42 @@
+- 과목 게시판의 016_파일입출력.pdf 내 6번 실습 문제
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
+
+public class Test3 {
+	public static void main(String[] args) {
+		try {
+			while(true) {
+				String v=JOptionPane.showInputDialog("메모 입력");
+				if(v!=null) {
+					FileWriter w=new FileWriter("C:/Temp/memo.txt",true);
+					w.write(v+"\n");
+					w.close();
+				}
+				else break;
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
+
+- 과목 게시판의 016_파일입출력.pdf 내 7번 실습 문제
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class LineAdd {
+	public static void main(String[] args) {
+		String v=args[0];
+		try {
+			FileWriter w=new FileWriter("C:/Temp/memo.txt",true);
+			w.write(v+"\n");
+			w.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
