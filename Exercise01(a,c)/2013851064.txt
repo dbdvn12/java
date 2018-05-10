@@ -1,0 +1,58 @@
+W04P01
+
+
+public class W04p01 {
+
+	public static void main(String[] s) {
+		char x[]=s[0].toCharArray();
+		char y[]=s[1].toCharArray();
+		System.out.println(equals(x,y));
+		
+	}
+
+	private static boolean equals(char[] x, char[] y) {
+		String a=new String(x);
+		String b=new String(y);
+		if(a.compareTo(b)==0)	return true;
+		else 	return false;
+		
+				
+	}
+
+}
+
+W04P03
+
+
+public class W04p03 {
+	public static void main(String[] s) {
+		char x[]=s[0].toCharArray();
+		char y[]=s[1].toCharArray();
+		System.out.println(concat(x,y));
+	}
+
+	private static char[] concat(char[] x, char[] y) {
+		String a=new String(x)+new String(y);
+		char[] b=a.toCharArray();
+		return b;
+	}
+}
+
+W04P06
+
+
+public class W04p06 {
+
+	public static void main(String[] s) {
+		boolean palindromeYN=palindromeYN(s[0]);
+		System.out.println(palindromeYN);
+
+	}
+
+	private static boolean palindromeYN(String string) {
+		if(string.charAt(0)==string.charAt(string.length()-1))	return true;
+		else return false;
+			
+	}
+
+}
