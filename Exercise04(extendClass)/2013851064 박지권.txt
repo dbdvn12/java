@@ -1,0 +1,179 @@
+-W05P01
+
+public class Movie01 {
+	String title;
+	String directedBy;
+	int runningTime;
+	String releaseDate;
+	
+}
+
+public class W05p01 {
+	public static void main(String[] s) {
+		Movie01 movie=new Movie01();
+		movie.title="The Matrix";
+		movie.directedBy="The Wachowski Brothers";
+		movie.runningTime=136;
+		movie.releaseDate="19990331";
+		System.out.println(movie.title+","+movie.directedBy+","+movie.releaseDate);
+	}
+}
+
+-W05P12
+
+public class Calculator {
+	double a,b;
+	String oper;
+	String calculation;
+	public void setOperands(double a, double b) {
+		this.a=a;
+		this.b=b;
+	}
+
+	public void setOperator(String oper) {
+		this.oper=oper;		
+	}
+
+	public void doCalculation() {
+		switch(oper) {
+			case "+": {
+				calculation=a+oper+b+"="+(a+b);
+				break;
+			}
+			case "-": {
+				calculation=a+oper+b+"="+(a-b);
+				break;
+			}
+			case "*": {
+				calculation=a+oper+b+"="+(a*b);
+				break;
+			}
+			case "/": {
+				calculation=a+oper+b+"="+(a/b)*1.0;
+				break;
+			}
+		}
+	}
+	@Override
+	public String toString() {	
+		return calculation;
+	}
+	
+}
+
+public class W05p12 {
+
+	public static void main(String[] args) {
+		Calculator calc=new Calculator();
+		calc.setOperands(12,34);
+		calc.setOperator("+");
+		calc.doCalculation();
+		System.out.println(calc);
+		
+		calc.setOperator("-");
+		calc.doCalculation();
+		System.out.println(calc);
+		
+		calc.setOperands(32,12);
+		calc.doCalculation();
+		System.out.println(calc);
+		
+		calc.setOperator("*");
+		calc.doCalculation();
+		System.out.println(calc);
+		
+		calc.setOperator("/");
+		calc.doCalculation();
+		System.out.println(calc);
+	}
+
+}
+
+- "클래스 정의 실습 (method)"의 1번 문제
+
+public class BankAccount {
+	String id;
+	int balance;
+	double point;
+	
+	public BankAccount(String id) {
+		this.id=id;
+	}
+
+	public void deposit(int money) {
+		balance+=money;
+		point+=money*0.01;
+	}
+
+	public void withdraw(int money) {
+		balance-=money;
+	}
+
+	public void transferTo(BankAccount aN, int money) {
+		withdraw(money);
+		aN.deposit(money);
+	}
+	@Override
+	public String toString() {
+		return "계좌번호:"+id+", 잔고:"+balance+", 포인트"+point;
+		
+	}
+	
+	
+}
+
+public class Bank {
+
+	public static void main(String[] args) {
+		BankAccount	ba1=new BankAccount("B-001");		
+		ba1.deposit(1000); // 1000원 입금
+		ba1.deposit(500); // 500원 입금
+		ba1.withdraw(700); // 700원 인출
+		
+		BankAccount	ba2=new BankAccount("B-002");
+		ba1.transferTo(ba2,300); // ba1계좌에서 ba2계좌로 300원 이체
+
+		System.out.println(ba1);
+		System.out.println(ba2);
+	}
+
+}
+
+- "클래스 정의 실습 (method)"의 2번 문제
+
+public class Bank2 {
+	public static void main(String[] args) {
+		BankAccount ba1=new BankAccount("B-001");		
+		deposit(ba1,1000); // 1000원 입금
+		deposit(ba1,500); // 500원 입금
+		withdraw(ba1,700); // 700원 인출
+		
+		BankAccount	ba2=new BankAccount("B-002");
+		transferTo(ba1,ba2,300); // ba1계좌에서 ba2계좌로 300원 이체
+
+		System.out.println(toString(ba1));
+		System.out.println(toString(ba2));
+	}
+
+	private static String toString(BankAccount ba) {		
+		String a="계좌번호:"+ba.id+",잔고:"+ba.balance+",포인트:"+ba.point;
+		return a;
+	}
+
+	private static void transferTo(BankAccount ba1, BankAccount ba2, int money) {
+		ba1.withdraw(money);
+		ba2.deposit(money);
+	}
+
+	private static void withdraw(BankAccount ba1, int money) {
+		ba1.balance-=money;
+	}
+
+	private static void deposit(BankAccount ba1, int money) {
+		ba1.balance+=money;
+		ba1.point+=money*0.01;
+		
+	}
+}
+
+
